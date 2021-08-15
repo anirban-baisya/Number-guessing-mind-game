@@ -1,30 +1,16 @@
-var guess = Math.floor(Math.random() * 100) + 1; //this is a pre generated no. ; 100is max vale
-
-// 0 to <1
-
-//0.123456*100 = 12.3456 = 12
-
-//0.00002*100 = 0.002 = 0
-//0.9999*100 = 99.99 = 99
-// 0 to 99 -----> 1 to 100
-
 function calc() {
-  if (document.getElementById("U_input").value == "") {
-    //if the input box is empty
+  var h = parseFloat(document.getElementById("height").value);
+  var w = parseFloat(document.getElementById("weight").value);
+  var BMI = w / h ** 2;
 
-    document.getElementById("result").innerHTML = "Enter a number";
-    return;
-  }
-
-  var n = parseInt(document.getElementById("U_input").value); //storng the input value in n
-
-  if (n === guess)
-    //if user entered value is same as guess value then congo!
-    document.getElementById("result").innerHTML =
-      "Congrats! You got it correctly!";
-  else if (n > guess)
-    //if user entered value is greater
-    document.getElementById("result").innerHTML = "Guess a small number";
-  //if user entered value is smaller
-  else document.getElementById("result").innerHTML = "Guess a greater number";
+  if (BMI < 18.5) document.getElementById("result").innerHTML = "Underweight";
+  else if (BMI >= 18.5 && BMI < 25)
+    document.getElementById("result").innerHTML = "Normal range";
+  else if (BMI >= 25 && BMI < 30)
+    document.getElementById("result").innerHTML = "Overweight";
+  else if (BMI >= 30 && BMI < 35)
+    document.getElementById("result").innerHTML = "Obese class 1";
+  else if (BMI >= 35 && BMI < 40)
+    document.getElementById("result").innerHTML = "Obese class 2";
+  else document.getElementById("result").innerHTML = "Obese class 3";
 }
